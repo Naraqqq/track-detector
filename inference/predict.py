@@ -1,6 +1,6 @@
 import torch
 from PIL import Image
-from preprocess import preprocess_image
+from inference.preprocess import preprocess_image
 from torchvision.models import efficientnet_b4
 import torch.nn as nn
 
