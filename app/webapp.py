@@ -53,10 +53,12 @@ st.markdown("""
 MODEL_PATH = "model/efficientnet_model.pth"
 CLASS_NAMES = ['Bear', 'Bird', 'Cat', 'Dog', 'Leopard', 'Otter']
 
+
 # ==== Кэшируем модель ====
 @st.cache_resource
 def get_model():
     return load_model(MODEL_PATH)
+
 
 model = get_model()
 
@@ -112,7 +114,7 @@ if page == "🎯 Предсказание":
                 )
                 st.plotly_chart(fig, use_container_width=True)
 
-# Добавление в историю
+                # Добавление в историю
                 st.session_state["history"].append({
                     "filename": uploaded_file.name,
                     "label": label,
@@ -146,10 +148,11 @@ elif page == "ℹ️ О модели":
 
     st.write("""
     Модель: EfficientNet-B4, обученная на своих данных и со своей архитектурой
-    
+
     Классы: 6 (Bear, Bird, Cat, Dog, Leopard, Otter)  
-    
+
     Источник весов: [🤗 Hugging Face](https://huggingface.co/VladimirFireBall/efficientnet-steps)
     """)
 
-    st.markdown("<div class='footer'>© 2025 Track Detector | Разработано командой ptp2025</div>", unsafe_allow_html=True)
+    st.markdown("<div class='footer'>© 2025 Track Detector | Разработано командой ptp2025</div>",
+                unsafe_allow_html=True)
