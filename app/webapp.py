@@ -59,7 +59,6 @@ CLASS_NAMES = ['Bear', 'Bird', 'Cat', 'Dog', 'Leopard', 'Otter']
 def get_model():
     return load_model(MODEL_PATH)
 
-
 model = get_model()
 
 # ==== Навигация ====
