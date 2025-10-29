@@ -10,7 +10,7 @@ class ImageDataset(Dataset):
         self.data = data
         self.root_path = root_path
         self.transform = transform
-
+    
     def __len__(self):
         return len(self.data)
 

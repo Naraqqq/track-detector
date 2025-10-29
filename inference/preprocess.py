@@ -7,7 +7,7 @@ def preprocess_image(image: Image.Image):
     """Подготавливает изображение для подачи в модель"""
     img_transforms = v2.Compose([
         v2.ToPILImage(),
-        v2.Resize(224),
+        v2.Resize((384, 384)),
         v2.ToImage(),
         v2.ToDtype(torch.float32, scale=True),
         transforms.Normalize([0.485, 0.456, 0.406],

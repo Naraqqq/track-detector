@@ -2,7 +2,7 @@ import torch
 import pandas as pd
 import matplotlib.pyplot as plt
 from tqdm import tqdm
-from model import create_model
+from .model import create_model
 from sklearn.metrics import f1_score
 from datasets import create_train_dataloader
 from sklearn.preprocessing import LabelEncoder
