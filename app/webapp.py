@@ -4,6 +4,20 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import time
+import numpy as np
+
+
+
+def predict_or_ood(probs, class_names, entropy_threshold=2.5):
+    """
+    Определяет класс или 'Unknown', если след не встречался на обучении.
+    """
+    probs = np.array(probs)
+    entropy = -np.sum(probs * np.log(probs + 1e-10))
+    if entropy > entropy_threshold:
+        return "Unknown", probs
+    else:
+        return class_names[np.argmax(probs)], probs
 
 # ==== Импорты из проекта ====
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
@@ -85,8 +99,14 @@ if page == "🎯 Предсказание":
                 image = Image.open(uploaded_file).convert("RGB")
                 with st.spinner(f"Анализ {uploaded_file.name}..."):
                     time.sleep(0.5)
-                    label, probs = predict_image(model, image, CLASS_NAMES)
-                color = "green"
+                    label_raw, probs = predict_image(model, image, CLASS_NAMES)
+                    label, probs = predict_or_ood(probs, CLASS_NAMES, entropy_threshold=1.5)
+
+                # цвет для карточки
+                if label == "Unknown":
+                    color = "orange"
+                else:
+                    color = "green"
 
                 st.markdown(f"""
                 <div class='fade-in' style='

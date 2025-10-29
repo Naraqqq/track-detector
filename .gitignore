@@ -6,6 +6,10 @@ __pycache__/
 *.swp
 *.swo
 *.DS_Store
+<<<<<<< HEAD
+=======
+.idea/
+>>>>>>> master
 
 # Jupyter
 .ipynb_checkpoints/
@@ -18,4 +22,8 @@ venv/
 .env
 
 # Логи
+<<<<<<< HEAD
 *.log
+=======
+*.log
+>>>>>>> master
